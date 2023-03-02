@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from cache import Cache
 from services.token import TokenService
@@ -6,6 +7,19 @@ from services.shortener import ShortenerService
 from validators.schema import ShortenRequest
 
 app = FastAPI()
+origins = [
+    "http://localhost:3000",
+    "https://fasturlshortener.azurewebsites.net",
+    "https://www.fasturlshortener.azurewebsites.net"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/{key}")
