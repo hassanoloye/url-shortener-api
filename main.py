@@ -10,7 +10,8 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "https://fasturlshortener.azurewebsites.net",
-    "https://www.fasturlshortener.azurewebsites.net"
+    "https://www.fasturlshortener.azurewebsites.net",
+    "https://zealous-ocean-085c2dc10.2.azurestaticapps.net"
 ]
 
 app.add_middleware(
