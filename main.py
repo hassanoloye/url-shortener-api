@@ -6,17 +6,15 @@ from services.token import TokenService
 from services.shortener import ShortenerService
 from validators.schema import ShortenRequest
 
+
+import config
+
+
 app = FastAPI()
-origins = [
-    "http://localhost:3000",
-    "https://fasturlshortener.azurewebsites.net",
-    "https://www.fasturlshortener.azurewebsites.net",
-    "https://zealous-ocean-085c2dc10.2.azurestaticapps.net"
-]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=config.origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
